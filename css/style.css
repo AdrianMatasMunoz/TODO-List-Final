@@ -1,0 +1,28 @@
+:root {
+    --menu-bg-color: rgb(72, 182, 72);
+    --menu-text-color: rgb(255, 255, 255);
+    --menu-bottom-bg-color: rgb(77, 126, 190);
+}
+
+body {
+    margin: 0px;
+    font-family: "Noto Sans";
+}
+
+header {
+    color: var(--menu-text-color);
+}
+
+.header-top {
+    background-color: var(--menu-bg-color);
+    padding: 10px;
+}
+
+.header-top > h1, .header-bottom > p {
+    margin: 0px;
+}
+
+.header-bottom {
+    background-color: var(--menu-bottom-bg-color);
+    padding: 6px;
+}
