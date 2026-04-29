@@ -1,12 +1,19 @@
 :root {
     --menu-bg-color: rgb(72, 182, 72);
     --menu-text-color: rgb(255, 255, 255);
+    --menu-text-color-selected: rgb(220, 220, 220);
     --menu-bottom-bg-color: rgb(77, 126, 190);
+}
+
+html {
+    height: 100%;
 }
 
 body {
     margin: 0px;
     font-family: "Noto Sans";
+    height: 100%;
+    overflow-y: hidden;
 }
 
 header {
@@ -25,4 +32,41 @@ header {
 .header-bottom {
     background-color: var(--menu-bottom-bg-color);
     padding: 6px;
+}
+
+main {
+    display: flex;
+    height: 100%;
+}
+
+aside {
+    background-color: var(--menu-bg-color);
+    padding: 20px;
+    height: 100%;
+    color: var(--menu-text-color);
+    width: 230px;
+    margin-right: 15px;
+}
+
+aside > h2 {
+    margin-top: 0px;
+}
+
+li {
+    color: var(--menu-text-color);
+    margin-bottom: 10px;
+}
+
+a {
+    color: var(--menu-text-color);
+    text-decoration-color: var(--menu-text-color);
+    font-weight: bold;
+}
+
+a:hover {
+    color: var(--menu-text-color-selected);
+}
+
+#main {
+    padding-top: 10px;
 }
