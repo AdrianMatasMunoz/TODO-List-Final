@@ -1,5 +1,6 @@
 :root {
     --menu-bg-color: rgb(72, 182, 72);
+    --menu-bg-color-pressed: rgb(64, 158, 64);
     --menu-text-color: rgb(255, 255, 255);
     --menu-text-color-selected: rgb(220, 220, 220);
     --menu-bottom-bg-color: rgb(77, 126, 190);
@@ -45,7 +46,6 @@ aside {
     height: 100%;
     color: var(--menu-text-color);
     width: 230px;
-    margin-right: 15px;
 }
 
 aside > h2 {
@@ -67,6 +67,43 @@ a:hover {
     color: var(--menu-text-color-selected);
 }
 
-#main {
-    padding-top: 10px;
+#main-section {
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+#responsive-btn {
+    height: 40px;
+    width: 40px;
+    background-color: var(--menu-bg-color);
+    border-style: none;
+    color: var(--menu-text-color);
+    font-size: 24px;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    position: absolute;
+    left: 99.5%;
+    top: 0%;
+}
+
+#responsive-btn:active {
+    background-color: var(--menu-bg-color-pressed);
+}
+
+@media(max-width: 700px) {
+    aside {
+        position: fixed;
+        transition: all 0.3s cubic-bezier(0, 0, 0, 1);
+        right: 100%;
+    }
+
+    aside.moved {
+        right: calc(100% - 270px);
+    }
+}
+
+@media(min-width: 701px) {
+    #responsive-btn {
+        display: none;
+    }
 }
