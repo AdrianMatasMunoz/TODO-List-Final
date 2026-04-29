@@ -69,7 +69,6 @@ a:hover {
 
 #main-section {
     padding-left: 10px;
-    padding-top: 20px;
 }
 
 #responsive-btn {
@@ -99,6 +98,10 @@ a:hover {
 
     aside.moved {
         right: calc(100% - 270px);
+    }
+
+    #main-section {
+        padding-top: 20px;
     }
 }
 
