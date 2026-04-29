@@ -4,6 +4,11 @@
     --menu-text-color: rgb(255, 255, 255);
     --menu-text-color-selected: rgb(220, 220, 220);
     --menu-bottom-bg-color: rgb(77, 126, 190);
+    --button-bg: rgb(77, 126, 190);
+    --button-bg-hover: rgb(69, 114, 173);
+    --button-bg-pressed: rgb(57, 94, 141);
+    --app-menu: rgb(231, 231, 231);
+    --app-menu-border: rgb(196, 196, 196);
 }
 
 html {
@@ -48,7 +53,7 @@ aside {
     width: 230px;
 }
 
-aside > h2 {
+h2 {
     margin-top: 0px;
 }
 
@@ -68,6 +73,7 @@ a:hover {
 }
 
 #main-section {
+    padding-top: 10px;
     padding-left: 10px;
 }
 
@@ -89,7 +95,45 @@ a:hover {
     background-color: var(--menu-bg-color-pressed);
 }
 
-@media(max-width: 700px) {
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > input {
+    margin-bottom: 20px;
+}
+
+.menu-app {
+    background-color: var(--app-menu);
+    border-color: var(--app-menu-border);
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#main-section button {
+    background-color: var(--button-bg);
+    border-width: 0px;
+    padding: 7px;
+    color: var(--menu-text-color);
+    font-weight: bold;
+    font-size:large;
+    border-radius: 15px;
+}
+
+#main-section button:hover {
+    background-color: var(--button-bg-hover);
+    color: var(--menu-text-color-selected);
+}
+
+#main-section button:active {
+    background-color: var(--button-bg-pressed);
+    color: var(--menu-text-color-selected);
+}
+
+@media(max-width: 600px) {
     aside {
         position: fixed;
         transition: all 0.3s cubic-bezier(0, 0, 0, 1);
@@ -101,11 +145,12 @@ a:hover {
     }
 
     #main-section {
+        padding-left: 40px;
         padding-top: 20px;
     }
 }
 
-@media(min-width: 701px) {
+@media(min-width: 601px) {
     #responsive-btn {
         display: none;
     }
