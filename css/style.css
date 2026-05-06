@@ -9,6 +9,9 @@
     --button-bg-pressed: rgb(57, 94, 141);
     --app-menu: rgb(231, 231, 231);
     --app-menu-border: rgb(196, 196, 196);
+    --trash-btn: rgb(230, 5, 5);
+    --trash-btn-hover: rgb(216, 0, 0);
+    --trash-btn-pressed: rgb(190, 0, 0);
 }
 
 html {
@@ -73,8 +76,13 @@ a:hover {
 }
 
 #main-section {
+    width: 100%;
     padding-top: 10px;
     padding-left: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #responsive-btn {
@@ -111,9 +119,10 @@ form > input {
     border-style: solid;
     border-radius: 15px;
     padding: 15px;
+    width: max-content;
 }
 
-#main-section button {
+section button {
     background-color: var(--button-bg);
     border-width: 0px;
     padding: 7px;
@@ -123,14 +132,61 @@ form > input {
     border-radius: 15px;
 }
 
-#main-section button:hover {
+section button:hover {
     background-color: var(--button-bg-hover);
     color: var(--menu-text-color-selected);
 }
 
-#main-section button:active {
+section button:active {
     background-color: var(--button-bg-pressed);
     color: var(--menu-text-color-selected);
+}
+
+#category-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#category-container > section > div {
+    margin: 10px;
+    padding: 10px;
+}
+
+.category {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.category > button {
+    background-color: var(--trash-btn);
+    width: 40px;
+    height: 40px;
+    font-weight: bolder;
+}
+
+.category > button:hover {
+    background-color: var(--trash-btn-hover);
+}
+
+.category > button:active {
+    background-color: var(--trash-btn-pressed);
+}
+
+svg {
+    width: 20px;
+    height: 25px;
+}
+
+#load-error {
+    display: none;
+    color: #F00F;
+}
+
+#load-error.show-error {
+    display: block;
 }
 
 @media(max-width: 600px) {
@@ -153,5 +209,40 @@ form > input {
 @media(min-width: 601px) {
     #responsive-btn {
         display: none;
+    }
+}
+
+@media(min-width: 750px) {
+    #category-container > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media(min-width: 1050px) {
+    #category-container > div {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media(min-width: 1350px) {
+    #category-container > div {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+@media(min-width: 1650px) {
+    #category-container > div {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+    }
+}
+
+@media(min-width: 1950px) {
+    #category-container > div {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
     }
 }
