@@ -33,9 +33,11 @@ document.addEventListener("DOMContentLoaded", (ev) => {
         return;
     }
 
-    /*let categoryTemplate = `
-<div class="menu-app category">
-    <p>Categoria</p>
+    if(categories.length === 0) return;
+
+    const categoryTemplate = `
+<div class="menu-app category" style="background-color: {0}; border-color: #000;">
+    <p>{1}</p>
     <button>
         <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
         image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 456 511.82">
@@ -50,5 +52,46 @@ document.addEventListener("DOMContentLoaded", (ev) => {
             18.53-20.58 18.53-11.35 0-20.58-8.3-20.58-18.53V245.66z"/>
         </svg>
     </button>
-</div>`;*/
+</div>`;
+
+    document.getElementById("no-categories").style.display = "none";
+    const categoryList = document.getElementById("category-list");
+    
+    categories.forEach((v, i) => {
+        let categoryHTML = categoryTemplate
+            .replace("{0}", v.color)
+            .replace("{1}", v.nom);
+        categoryList.innerHTML += categoryHTML;
+    });
+
+    document.querySelectorAll(".category > button").forEach((v) => {
+        v.addEventListener("click", (ev) => {
+            categories = categories.filter((c) => {
+                return c.nom !== v.parentElement.getElementsByTagName("p")[0].innerHTML;
+            });
+
+            localStorage.setItem("categories", JSON.stringify(categories));
+
+            window.location.reload();
+        });
+    });
+});
+
+document.addEventListener("submit", (ev) => {
+    let nom = document.getElementById("nom-categoria").value;
+    let categoriaExists = false;
+    categories.forEach((c) => {
+        categoriaExists = categoriaExists || c.nom === nom;
+    });
+    if(categoriaExists) {
+        alert("La categoria ja existeix.");
+        ev.preventDefault();
+        return;
+    }
+
+    categories.push(new Categoria(
+        document.getElementById("nom-categoria").value,
+        document.getElementById("color-categoria").value
+    ));
+    localStorage.setItem("categories", JSON.stringify(categories));
 });
