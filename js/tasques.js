@@ -1,4 +1,4 @@
-import { Categoria, Tasca } from "./models.js";
+import { Categoria, Tasca, Util } from "./models.js";
 
 document.addEventListener("DOMContentLoaded", (ev) => {
     let categories = localStorage.getItem("categories");
@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", (ev) => {
 
     let categoriesSelect = document.getElementById("categoria-tasca");
     
-    categories.forEach(v => {
-        categoriesSelect.innerHTML += `<option value="${v.nom}" style="background-color: ${v.color}">${v.nom}</option>`;
+    categories.forEach((v, i) => {
+        categoriesSelect.innerHTML += `<option value="${v.nom}" style="background-color: ${v.color}">${Util.adaptForHTML(v.nom)}</option>`;
     });
 });
 
@@ -27,6 +27,7 @@ document.addEventListener("submit", (ev) => {
     });
 
     let tasca = new Tasca(
+        Util.getNextTaskId(tasques),
         document.getElementById("titol-tasca").value,
         document.getElementById("descripcio-tasca").value,
         document.getElementById("data-tasca").value,

@@ -12,6 +12,9 @@
     --trash-btn: rgb(230, 5, 5);
     --trash-btn-hover: rgb(216, 0, 0);
     --trash-btn-pressed: rgb(190, 0, 0);
+    --finish-btn: rgb(43, 228, 43);
+    --finish-btn-hover: rgb(33, 198, 33);
+    --finish-btn-pressed: rgb(23, 168, 23);
 }
 
 html {
@@ -58,6 +61,10 @@ aside {
 
 h2 {
     margin-top: 0px;
+}
+
+#main-section h2 {
+    margin-top: 10px;
 }
 
 li {
@@ -160,7 +167,7 @@ section button:active {
     align-items: center;
 }
 
-.category > button {
+.category > button, .task-buttons > .trash, .task-buttons > .mark-unfinished {
     background-color: var(--trash-btn);
     width: 40px;
     height: 40px;
@@ -170,12 +177,30 @@ section button:active {
     border-style: solid;
 }
 
-.category > button:hover {
+.task-buttons > .mark-finished {
+    background-color: var(--finish-btn);
+    width: 40px;
+    height: 40px;
+    font-weight: bolder;
+    border-color: black;
+    border-width: 1.5px;
+    border-style: solid;
+}
+
+.category > button:hover, .task-buttons > .trash:hover, .task-buttons > .mark-unfinished:hover {
     background-color: var(--trash-btn-hover);
 }
 
-.category > button:active {
+.task-buttons > .mark-finished:hover {
+    background-color: var(--finish-btn-hover);
+}
+
+.category > button:active, .task-buttons > .trash:active, .task-buttons > .mark-unfinished:active {
     background-color: var(--trash-btn-pressed);
+}
+
+.task-buttons > .mark-finished:active {
+    background-color: var(--finish-btn-pressed);
 }
 
 svg {
@@ -205,6 +230,43 @@ select {
 
 .menu-app > h2 {
     justify-self: center;
+}
+
+#main-section.main-index {
+    align-items: baseline;
+    margin-left: 10px;
+}
+
+.tasca {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 300px;
+}
+
+.tasca > .mini-txt {
+    font-size: smaller;
+    margin: 2px;
+    margin-left: 0px;
+}
+
+.tasca > .separation {
+    margin-top: 10px;
+}
+
+.tasca > p {
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.hide {
+    display: none;
+}
+
+.categoria-tasca {
+    width: fit-content;
+    padding: 5px;
+    border-radius: 15px;
 }
 
 @media(max-width: 600px) {
@@ -239,5 +301,10 @@ select {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    #finished-tasks, #unfinished-tasks {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
