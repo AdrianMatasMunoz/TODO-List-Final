@@ -192,6 +192,21 @@ svg {
     display: block;
 }
 
+textarea {
+    resize: none;
+    margin-bottom: 20px;
+    width: 400px;
+    height: 70px;
+}
+
+select {
+    margin-bottom: 20px;
+}
+
+.menu-app > h2 {
+    justify-self: center;
+}
+
 @media(max-width: 600px) {
     aside {
         position: fixed;
@@ -206,6 +221,10 @@ svg {
     #main-section {
         padding-left: 40px;
         padding-top: 20px;
+    }
+
+    textarea {
+        width: 70vw;
     }
 }
 
