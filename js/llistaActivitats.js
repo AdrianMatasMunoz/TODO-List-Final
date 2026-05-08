@@ -1,5 +1,26 @@
 import { Categoria, Tasca, Util } from "./models.js";
 
+const ctx = document.getElementById('tasques-chart');
+
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Gener', 'Febrer', 'Març', 'Abril', 'Maig', 'Juny', 'Juliol', 'Agost', 'Septembre', 'Octubre', 'Novembre', 'Desembre'],
+        datasets: [{
+        label: 'Tasques realitzades',
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+});
+
 let tasques = [];
 let curFileContent = null;
 
@@ -36,6 +57,10 @@ document.addEventListener("DOMContentLoaded", (ev) => {
                 ${v.feta ? UNFINISH_BUTTON : FINISH_BUTTON}
             </div>
         </section>`;
+
+        if(v.feta) {
+            chart.data.datasets[0].data[new Date(v.data).getMonth()]++;
+        }
     });
 
     document.querySelectorAll(".trash").forEach((v) => {
