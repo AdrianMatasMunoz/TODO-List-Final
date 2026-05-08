@@ -1,4 +1,4 @@
-import { Prioritat, Categoria, Tasca } from "./models.js";
+import { Categoria, Tasca } from "./models.js";
 
 document.addEventListener("DOMContentLoaded", (ev) => {
     let categories = localStorage.getItem("categories");
@@ -33,6 +33,6 @@ document.addEventListener("submit", (ev) => {
         categoria,
         document.getElementById("prioritat-tasca").value
     );
-    tasques.push(tasca);
+    tasques.push(tasca.toJSON());
     localStorage.setItem("tasques", JSON.stringify(tasques));
 });
