@@ -50,7 +50,7 @@ export class Util {
                 categoria = v;
         });
 
-        return new Categoria(categoria.nom, categoria.color);
+        return (categoria === null ? null : new Categoria(categoria.nom, categoria.color));
     }
 
     static adaptForHTML(text) {
