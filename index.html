@@ -36,10 +36,27 @@
                 <button id="responsive-btn">&gt;</button>
             </aside>
             <section id="main-section">
-                <h2>Llista d'Activitats</h2>
+                <section class="menu-app">
+                    <h2>Llista d'Activitats</h2>
+                    <form>
+                        <label for="file-input">Importar tasques: </label>
+                        <input type="file" id="file-input" name="fileInput" accept=".json" required>
+                        <button type="submit">Carregar</button>
+                    </form>
+                </section>
+                <h2>Tasques Pendents</h2>
+                <p id="no-unfinished-tasks" class="hide">No hi ha cap tasca pendent.</p>
+                <section id="unfinished-tasks"></section>
+                <h2>Tasques Finalitzades</h2>
+                <p id="no-finished-tasks" class="hide">No hi ha cap tasca finalitzada.</p>
+                <section id="finished-tasks"></section>
+                <canvas id="tasques-chart"></canvas>
             </section>
         </main>
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <script src="./js/responsive.js"></script>
+        <script type="module" src="./js/llistaActivitats.js"></script>
     </body>
 </html>
