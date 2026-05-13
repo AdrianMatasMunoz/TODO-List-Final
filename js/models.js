@@ -84,6 +84,17 @@ export class Util {
         while(Util.taskExists(`${Util.formatNumber(num, 3)}`));
         return `${Util.formatNumber(num, 3)}`;
     }
+
+    static getTextColorFromBackground(color) {
+        color = parseInt(color.replace("#", ""), 16)
+        let r = Math.floor(color / 65536) % 256;
+        let g = Math.floor(color / 256) % 256;
+        let b = color % 256;
+        
+        if((r+g+b)/3 < 128)
+            return "#FFFF";
+        return "#000F";
+    }
 }
 
 export class Tasca {

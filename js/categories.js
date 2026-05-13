@@ -1,4 +1,4 @@
-import { Categoria } from "./models.js";
+import { Categoria, Util } from "./models.js";
 
 let categories = [];
 
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     if(categories.length === 0) return;
 
     const categoryTemplate = `
-<div class="menu-app category" style="background-color: {0}; border-color: #000;">
-    <p>{1}</p>
+<div class="menu-app category" style="background-color: {0}; border-color: #000; color: {1};">
+    <p>{2}</p>
     <button>
         <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
         image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 456 511.82">
@@ -60,7 +60,8 @@ document.addEventListener("DOMContentLoaded", (ev) => {
     categories.forEach((v, i) => {
         let categoryHTML = categoryTemplate
             .replace("{0}", v.color)
-            .replace("{1}", v.nom);
+            .replace("{1}", Util.getTextColorFromBackground(v.color))
+            .replace("{2}", v.nom);
         categoryList.innerHTML += categoryHTML;
     });
 
